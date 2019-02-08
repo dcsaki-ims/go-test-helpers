@@ -1,4 +1,4 @@
-package vaulthelpers
+package vault
 
 import (
 	"bufio"

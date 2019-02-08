@@ -1,4 +1,4 @@
-package fshelpers
+package fs
 
 import (
 	"io/ioutil"

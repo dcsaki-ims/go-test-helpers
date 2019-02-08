@@ -1,4 +1,4 @@
-package k8shelpers
+package k8s
 
 import (
 	"testing"

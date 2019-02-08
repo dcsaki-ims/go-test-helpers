@@ -1,4 +1,4 @@
-package tfhelpers
+package terraform
 
 import (
 	"io/ioutil"
