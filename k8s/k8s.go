@@ -6,7 +6,7 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/stretchr/testify/require"
 
-	"github.com/gruntwork-io/terratest/modules/k8s"
+	tf_k8s "github.com/gruntwork-io/terratest/modules/k8s"
 
 	corev1 "k8s.io/api/core/v1"
 )
@@ -16,10 +16,10 @@ import (
 func CheckNodesConditions(t *testing.T) {
 
 	// check all nodes in k8s cluster are 'ready'
-	require.Truef(t, k8s.AreAllNodesReady(t), "K8s nodes not ready")
+	require.Truef(t, tf_k8s.AreAllNodesReady(t), "K8s nodes not ready")
 
 	// get a list of all the nodes
-	nodes := k8s.GetNodes(t)
+	nodes := tf_k8s.GetNodes(t)
 	require.Truef(t, len(nodes) > 0, "No nodes found in K8s cluster")
 
 	// for each node, check its conditions
@@ -35,4 +35,10 @@ func CheckNodesConditions(t *testing.T) {
 		}
 	}
 
+}
+
+// GetOptions contructs an options instance from config file
+func GetOptions(configPath string) *tf_k8s.KubectlOptions {
+	options := tf_k8s.NewKubectlOptions("", configPath)
+	return options
 }
